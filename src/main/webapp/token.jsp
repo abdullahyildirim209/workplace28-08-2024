@@ -13,6 +13,7 @@
 
             response.setContentType("application/json");
 
+
             response.setCharacterEncoding("UTF-8");
             out.print("{\"token\":\"token5454ayildirim21\"}");
         } else {

@@ -1,29 +1,18 @@
+<%@ include file="classes/Request.jsp" %>
 <%
-
-    String username = request.getParameter("username");
-    String password = request.getParameter("password");
-
-
-    boolean isValidUser = "playstore".equals(username) && "123456".equals(password);
-
+    boolean isValidUser = "playstore".equals(request.getParameter("username")) && "123456".equals(request.getParameter("password"));
 
     if (isValidUser) {
 
-            response.setStatus(HttpServletResponse.SC_OK);
 
-            response.setContentType("application/json");
-
-
-            response.setCharacterEncoding("UTF-8");
-            out.print("{\"token\":\"token5454ayildirim21\"}");
-        } else {
-
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            out.print("{\"error\":\"girlien password veya username yanlıs\"}");
-        }
+        response.setContentType("application/json");
+        out.print("{\"token\":\"token5454ayildirim21\"}");
+    } else {
+        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        response.setContentType("application/json");
+        out.print("{\"error\":\"400\",\"message\":\"Girilen password veya username yanlış\"}");
+    }
 
 
+    out.print("{\"Username and password\":" + askedparmas + "}");
 %>

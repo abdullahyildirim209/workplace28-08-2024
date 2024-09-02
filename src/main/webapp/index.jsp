@@ -4,10 +4,10 @@
     out.print(r.test());
 
     HashMap<String, String> hm = r.setParametersHm();
-    out.print(hm);
+    out.print("HashMap " + hm);
 
     ArrayList<String> al = r.setParametersAl();
-    out.print(al);
+    out.print("ArrayList " + al);
 
     out.print(r.getParameterNames());
 

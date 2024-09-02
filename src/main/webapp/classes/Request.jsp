@@ -1,6 +1,7 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Enumeration" %>
+
 <%
 class Request{
     public String test = null;
@@ -22,7 +23,7 @@ class Request{
         HashMap<String, String> hm = new HashMap<String, String>();
 
         String[] keys = {"name", "surname"};
-        String[] values = {"Abdullah", "Yıldırım"};
+        String[] values = {"omer", "kesmez"};
 
         for (int i = 0; i < keys.length; i++) {
             hm.put(keys[i], values[i]);
@@ -45,19 +46,7 @@ class Request{
         return test;
     }
 
-    public void printHashMapEntries() {
-        HashMap<String, String> hm = setParametersHm();
-        for (String key : hm.keySet()) {
-            System.out.println("Key: " + key + ", Value: " + hm.get(key));
-        }
-    }
 
-    public void printArrayListEntries() {
-        ArrayList<String> al = setParametersAl();
-        for (String element : al) {
-            System.out.println("Element: " + element);
-        }
-    }
 
 }
 %>

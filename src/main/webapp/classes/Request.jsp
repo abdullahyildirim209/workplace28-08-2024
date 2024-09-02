@@ -12,21 +12,14 @@ class Request{
         parameterNames = request.getParameterNames();
     }
 
-    //public HashMap<String, String> setParametersHm() {
-        //HashMap<String, String> hm = new HashMap<String, String>();
-        //hm.put("name","Abdullah");
-        //hm.put("surname","Yıldırım");
-        //return hm;
-    //}
-
     public HashMap<String, String> setParametersHm() {
         HashMap<String, String> hm = new HashMap<String, String>();
-
-        String[] keys = {"name", "surname"};
-        String[] values = {"omer", "kesmez"};
-
-        for (int i = 0; i < keys.length; i++) {
-            hm.put(keys[i], values[i]);
+        //hm.put("name","Abdullah");
+        //hm.put("surname","Yıldırım");
+        while(parameterNames.hasMoreElements()){
+            String parameterName  = (String) parameterNames.nextElement();
+            String parameterValue = request.getParameter(parameterName);
+            hm.put(parameterName,parameterValue);
         }
         return hm;
     }
@@ -35,7 +28,7 @@ class Request{
         ArrayList<String> al = new ArrayList<String>();
         al.add("Abdullah");
         al.add("Yildirim");
-        return al;
+        return al;//ayni sekilde hm nin
     }
 
     public Enumeration getParameterNames() {
@@ -45,7 +38,12 @@ class Request{
     public String test(){
         return test;
     }
-
+    
+//finalize methodu calisip calismadigini kontrol et
+// kontrol loginleri get param kullanip
+// token olusturma ile alakali fonks var mi
+// tree map integer veya
+//https://jdbc.postgresql.org/documentation/use/
 
 
 }

@@ -25,10 +25,11 @@ class Request {
         return hm;
     }
 
-    public TreeMap<String, Object> setParametersTreemap(){
-        TreeMap<String,Object> tm = new TreeMap<String,Object>();
-        HashMap<String,String> hm = setParametersHm();
-        tm.put("parameters",hm);
+    public TreeMap<String, JSONObject> setParametersTreemap() {
+        TreeMap<String, JSONObject> tm = new TreeMap<String, JSONObject>();
+        HashMap<String, String> hm = setParametersHm();
+        JSONObject jsonObject = new JSONObject(hm);
+        tm.put("parameters", jsonObject);
         return tm;
     }
 
@@ -52,7 +53,7 @@ class Request {
             String token = UUID.randomUUID().toString();
             return "token is" + token;
         } else {
-            return "The username or password entered is incorrect";
+            return "username or password entered is incorrect";
         }
     }
 

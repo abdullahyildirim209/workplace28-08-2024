@@ -1,4 +1,5 @@
 <%@ page import="java.util.*" %>
+<%@ page import="org.json.JSONObject" %>
 <%@ include file="classes/Request.jsp" %>
 <%
 Request r = new Request();
@@ -10,8 +11,10 @@ out.print("HashMap " + hm);
 ArrayList<String> al = r.setParametersAl();
 out.print("ArrayList " + al);
 
-TreeMap<String, Object> tm = r.setParametersTreemap();
-out.print("TreeMap" + tm);
+TreeMap<String, JSONObject> tm = r.setParametersTreemap();
+    for (Map.Entry<String, JSONObject> entry : tm.entrySet()) {
+        out.println(entry.getKey() + ": " + entry.getValue().toString());
+    }
 
 
 //out.print(r.getParameterNames());

@@ -2,15 +2,25 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="java.util.TreeMap" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.SQLException" %>
 
 <%
 class Request {
     public String test = null;
     private Enumeration parameterNames;
+    private Connection conn;
 
     public Request() {
         test           = "class is working";
         //parameterNames = request.getParameterNames();
+        try {
+            // Örneğin bir veritabanı bağlantısı açalım
+            conn = DriverManager.getConnection("jdbc:yourdatabaseurl", "username", "password");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public HashMap<String, String> setParametersHm() {
@@ -54,6 +64,19 @@ class Request {
             return "token is" + token;
         } else {
             return "username or password entered is incorrect";
+        }
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        try {
+            if (conn != null && !conn.isClosed()) {
+                conn.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            super.finalize();
         }
     }
 

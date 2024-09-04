@@ -29,7 +29,7 @@ class Request {
         TreeMap<String,Object> tm = new TreeMap<String,Object>();
         HashMap<String,String> hm = setParametersHm();
         tm.put("parameters",hm);
-        return tm;//hashmapi buraya nsail atacagini ogren
+        return tm;
     }
 
     public ArrayList<String> setParametersAl() {
@@ -44,11 +44,16 @@ class Request {
         return al;
     }
 
-    public boolean validateUser(String username, String password) {
+    public String validateUser(String username, String password) {
         String inputUsername = request.getParameter("username");
         String inputPassword = request.getParameter("password");
-//playstore 123456 bunun icerisnde olacak
-        return username.equals(inputUsername) && password.equals(inputPassword);//boolean donmeyecek token buraya al
+
+        if (username.equals(inputUsername) && password.equals(inputPassword)) {
+            String token = UUID.randomUUID().toString();
+            return "token is" + token;
+        } else {
+            return "The username or password entered is incorrect";
+        }
     }
 
     public String test() {

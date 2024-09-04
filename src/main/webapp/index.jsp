@@ -1,18 +1,20 @@
+<%@ page import="java.util.*" %>
 <%@ include file="classes/Request.jsp" %>
 <%
-    Request r = new Request();
-    out.print(r.test());
+Request r = new Request();
+out.print(r.test());
 
-    HashMap<String, String> hm = r.setParametersHm();
-    out.print("HashMap " + hm);
+HashMap<String, String> hm = r.setParametersHm();
+out.print("HashMap " + hm);
 
-    ArrayList<String> al = r.setParametersAl();
-    out.print("ArrayList " + al);
+ArrayList<String> al = r.setParametersAl();
+out.print("ArrayList " + al);
 
-    //out.print(r.getParameterNames());
+TreeMap<String, Object> tm = new TreeMap<String, Object>();
+out.print("TreeMap" + tm);
 
 
-
+//out.print(r.getParameterNames());
 %>
 
 

@@ -10,7 +10,7 @@ out.print("HashMap " + hm);
 ArrayList<String> al = r.setParametersAl();
 out.print("ArrayList " + al);
 
-TreeMap<String, Object> tm = new TreeMap<String, Object>();
+TreeMap<String, Object> tm = r.setParametersTreemap();
 out.print("TreeMap" + tm);
 
 

@@ -55,11 +55,6 @@ class Request {
         return test;
     }
 }
-//finalize methodu calisip calismadigini kontrol et
-// kontrol loginleri get param kullanip yapildi
-// token olusturma ile alakali fonks var mi // token olusturuldu
-// tree map integer veya
-//https://jdbc.postgresql.org/documentation/use/
 %>
 
 

@@ -4,5 +4,20 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>HelloServlet</servlet-name>
+    <servlet-class>HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloServlet</servlet-name>
+    <url-pattern>/HelloServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>token</servlet-name>
+    <jsp-file>/token.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>token</servlet-name>
+    <url-pattern>/v1/token</url-pattern>
+  </servlet-mapping>
 </web-app>
-

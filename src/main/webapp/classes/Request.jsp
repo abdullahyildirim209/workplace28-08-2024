@@ -10,17 +10,11 @@
 class Request {
     public String test = null;
     private Enumeration parameterNames;
-    private Connection conn;
+
 
     public Request() {
         test           = "class is working";
         //parameterNames = request.getParameterNames();
-        try {
-            // Örneğin bir veritabanı bağlantısı açalım
-            conn = DriverManager.getConnection("jdbc:yourdatabaseurl", "username", "password");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public HashMap<String, String> setParametersHm() {
@@ -55,29 +49,31 @@ class Request {
         return al;
     }
 
-    public String validateUser(String username, String password) {
+    public JSONObject authenticate() {
         String inputUsername = request.getParameter("username");
         String inputPassword = request.getParameter("password");
+        //eger json bir veri gonderldiyse json ile de islem yapabilecek hale getir
+        String validUserName = "playstore";
+        String validPassword = "123456";
 
-        if (username.equals(inputUsername) && password.equals(inputPassword)) {
-            String token = UUID.randomUUID().toString();
-            return "token is" + token;
+        if (inputUsername.equals(validUserName) && inputPassword.equals(validPassword)) {
+            return token(200);
         } else {
-            return "username or password entered is incorrect";
+            return token(401);
         }
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        try {
-            if (conn != null && !conn.isClosed()) {
-                conn.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            super.finalize();
+    public JSONObject token(int HttpStatus){
+        JSONObject jsonObject = new JSONObject();
+        if(HttpStatus == 200){
+            String token = UUID.randomUUID().toString();
+            jsonObject.put("status",200);
+            jsonObject.put("access_token",token);
+        } else if (HttpStatus == 401) {
+            jsonObject.put("status",401);
+            jsonObject.put("message","unauthorized access"+request.getParameter("username"));
         }
+        return jsonObject;
     }
 
     public String test() {

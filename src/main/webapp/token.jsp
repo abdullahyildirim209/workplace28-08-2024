@@ -1,9 +1,10 @@
 <%@ page import="java.util.*" %>
+<%@ page import="org.json.JSONObject" %>
 <%@ include file="classes/Request.jsp" %>
 <%
-Request r = new Request();
+    Request r = new Request();
 
-    String result = r.validateUser("playstore", "123456");
+    JSONObject result = r.authenticate();
     response.setContentType("application/json");
     out.println(result);
 %>
